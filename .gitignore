@@ -25,3 +25,11 @@
 ###< symfony/asset-mapper ###
 
 /.idea
+
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###
+
+###> qossmic/deptrac-shim ###
+/.deptrac.cache
+###< qossmic/deptrac-shim ###
