@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Api\ApiRequest;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -13,8 +14,9 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
-
-        $form = $this->createFormBuilder()
+        $search = $this->searchApi("https://api.discogs.com/database/search?q=Banana&key=".$_ENV['CONSUMER_KEY']."&secret=".$_ENV['CONSUMER_SECRET_KEY']);
+        $searchString = var_dump($search["results"][0]);
+        $form = $this->createFormBuilder($search)
             ->add('search', TextType::class)
             ->add('send', SubmitType::class, ['label' => 'Search'])
             ->getForm();
@@ -22,5 +24,11 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'form'=>$form,
         ]);
+    }
+
+    private function searchApi(String $url): array
+    {
+        $apiRequest = new ApiRequest();
+        return $apiRequest->fetchGitHubInformation($url);
     }
 }
