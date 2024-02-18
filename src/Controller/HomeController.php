@@ -14,21 +14,28 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
-        $search = $this->searchApi("https://api.discogs.com/database/search?q=Banana&key=".$_ENV['CONSUMER_KEY']."&secret=".$_ENV['CONSUMER_SECRET_KEY']);
-        $searchString = var_dump($search["results"][0]);
-        $form = $this->createFormBuilder($search)
+        if (!isset($_SESSION['username'])) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        $form = $this->createFormBuilder()
             ->add('search', TextType::class)
             ->add('send', SubmitType::class, ['label' => 'Search'])
             ->getForm();
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $fruit = $form->get('search')->getData();
+            $search = $this->searchApi("https://api.discogs.com/database/search?q=Banana&key=".$_ENV['CONSUMER_KEY']."&secret=".$_ENV['CONSUMER_SECRET_KEY']);
+        }
+
         return $this->render('home/index.html.twig', [
-            'form'=>$form,
+            'form'=>$form
         ]);
     }
 
     private function searchApi(String $url): array
     {
         $apiRequest = new ApiRequest();
-        return $apiRequest->fetchGitHubInformation($url);
+        return $apiRequest->apiRequest($url);
     }
 }

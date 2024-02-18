@@ -21,11 +21,23 @@ class User
     #[ORM\Column(length: 50)]
     private ?string $pseudo = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 250)]
     private ?string $mdp = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $discotheque = null;
+
+    /**
+     * @param string|null $mail
+     * @param string|null $pseudo
+     * @param string|null $mdp
+     */
+    public function __construct(?string $mail, ?string $pseudo, ?string $mdp)
+    {
+        $this->mail = $mail;
+        $this->pseudo = $pseudo;
+        $this->mdp = $mdp;
+    }
 
     public function getId(): ?int
     {

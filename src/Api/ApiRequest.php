@@ -11,7 +11,7 @@ class ApiRequest
         $this->client = HttpClient::create();
     }
 
-    public function fetchGitHubInformation(String $url): array
+    public function apiRequest(String $url): array
     {
         $response = $this->client->request(
             'GET',
