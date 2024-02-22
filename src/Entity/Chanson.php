@@ -34,6 +34,9 @@ class Chanson
     #[ORM\Column(nullable: true)]
     private ?int $Duree = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $style = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -107,6 +110,18 @@ class Chanson
     public function setDuree(?int $Duree): static
     {
         $this->Duree = $Duree;
+
+        return $this;
+    }
+
+    public function getStyle(): ?string
+    {
+        return $this->style;
+    }
+
+    public function setStyle(?string $style): static
+    {
+        $this->style = $style;
 
         return $this;
     }

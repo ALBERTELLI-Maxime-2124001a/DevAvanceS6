@@ -1,5 +1,23 @@
-.example-wrapper {
-    margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif;
+.discotheque-wrapper {
+    margin-left: 100px; font: 18px/1.5 sans-serif;
+}
+
+#discoResult{
+    display: flex;
+    flex-direction: row;
+}
+.artistResult{
+    padding: 20px;
+}
+.albumResult{
+    padding: 20px;
+}
+.chansonResult{
+    padding: 20px;
+}
+.cover{
+    max-width: 100%;
+    max-height: 200px;
 }
 
 .example-wrapper code {

@@ -28,17 +28,14 @@ class Album
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $annee = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $nombre_mus = null;
-
     #[ORM\Column(length: 200, nullable: true)]
     private ?string $label = null;
 
     #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
-    private ?array $musiques = null;
+    private ?array $tracklist = null;
 
-    #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
-    private ?array $durees = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $style = null;
 
     public function getId(): ?int
     {
@@ -93,18 +90,6 @@ class Album
         return $this;
     }
 
-    public function getNombreMus(): ?int
-    {
-        return $this->nombre_mus;
-    }
-
-    public function setNombreMus(?int $nombre_mus): static
-    {
-        $this->nombre_mus = $nombre_mus;
-
-        return $this;
-    }
-
     public function getLabel(): ?string
     {
         return $this->label;
@@ -117,26 +102,26 @@ class Album
         return $this;
     }
 
-    public function getMusiques(): ?array
+    public function getTracklist(): ?array
     {
-        return $this->musiques;
+        return $this->tracklist;
     }
 
-    public function setMusiques(?array $musiques): static
+    public function setTracklist(?array $tracklist): static
     {
-        $this->musiques = $musiques;
+        $this->tracklist = $tracklist;
 
         return $this;
     }
 
-    public function getDurees(): ?array
+    public function getStyle(): ?string
     {
-        return $this->durees;
+        return $this->style;
     }
 
-    public function setDurees(?array $durees): static
+    public function setStyle(?string $style): static
     {
-        $this->durees = $durees;
+        $this->style = $style;
 
         return $this;
     }
