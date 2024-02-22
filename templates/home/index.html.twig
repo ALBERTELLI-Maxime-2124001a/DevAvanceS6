@@ -16,7 +16,7 @@
     <h1>Tutti Frutti</h1>
     {{ form(form) }}
 </div>
-<div class="example-wrapper" {{ stimulus_controller('say-hello') }}>
+    <div class="example-wrapper" {{ stimulus_controller('say-hello') }}>
     <input type="text" {{ stimulus_target('say-hello', 'name') }}>
 
     <button {{ stimulus_action('say-hello', 'greet') }}>

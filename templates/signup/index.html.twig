@@ -3,11 +3,23 @@
 {% block title %}Hello SignupController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/app.js') }}" defer></script>
+    <script src="{{ asset('js/controllers/password-validation_controller.js') }}" defer></script>
+{% endblock %}
 
 <div class="signup-wrapper">
-    {{ form(form)  }}
+    <form method="post" data-controller="password-match">
+        {{ form_start(form) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.mail) }}
+        {{ form_row(form.password.first, {'attr': {'data-target': 'password-match.password'}}) }}
+        {{ form_row(form.password.second, {'attr': {'data-target': 'password-match.confirmation'}}) }}
+        <button type="submit">Register</button>
+        {{ form_end(form) }}
+    </form>
 </div>
 {% endblock %}
