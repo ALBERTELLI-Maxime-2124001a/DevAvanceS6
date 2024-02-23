@@ -43,6 +43,7 @@
             {% endif %}
             {% if type == "album" or type == "tout" %}
                 {% for album in albums %}
+                <a href="/display/album/{{ album.id }}">
                     <div class="albumResult">
                         <div>
                             <img class="cover" src={{ album.cover}} />
@@ -51,6 +52,7 @@
                             <h2>{{ album.nom }}</h2>
                         </div>
                     </div>
+                </a>
                 {% endfor %}
             {% endif %}
         </div>

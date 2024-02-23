@@ -12,7 +12,9 @@
 {% block body %}
 
 <div class="chanson-wrapper">
-    <img src={{ chanson.cover }}/>
+    <div class="">
+        <img class="coverDetail" src={{ chanson.cover}} />
+    </div>
     <div class="chansonInfo">
         <p>Artiste : {{ chanson.artiste }}</p>
         {% set formattedDate = chanson.publication|date('Y-m-d H:i') %}
@@ -22,4 +24,5 @@
         <p>Durée : {{ chanson.duree }}s</p>
     </div>
 </div>
+    <a href="/displayDisco/tout">Retour</a>
 {% endblock %}
