@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Constraints\EmailExists;
+use App\Entity\Discotheque;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\Constraint\Callback;

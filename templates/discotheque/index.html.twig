@@ -12,7 +12,7 @@
 {% block body %}
 <div class="discotheque-wrapper">
     <h1>Ma discothèque</h1>
-    {{ form(form) }}
+    {{ form(typeSelect) }}
     <div id="discoResult">
         {% if type == "chanson" or type == "tout" %}
             {% for chanson in chansons %}

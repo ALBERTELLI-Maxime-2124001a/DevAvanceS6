@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Musique : {{ chanson.nom }}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('home') }}
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('home') }}
+{% endblock %}
+
+{% block body %}
+
+<div class="chanson-wrapper">
+    <img src={{ chanson.cover }}/>
+    <div class="chansonInfo">
+        <p>Artiste : {{ chanson.artiste }}</p>
+        {% set formattedDate = chanson.publication|date('Y-m-d H:i') %}
+        <p>Publication : {{ formattedDate }}</p>
+        <p>Label : {{ chanson.label }}</p>
+        <p>Style : {{ chanson.style }}</p>
+        <p>Durée : {{ chanson.duree }}s</p>
+    </div>
+</div>
+{% endblock %}

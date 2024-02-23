@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Discotheque{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('home') }}
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('home') }}
+{% endblock %}
+
+{% block body %}
+    <div class="discotheque-wrapper">
+        <h1>Ma discothèque</h1>
+        {{ form(typeSelect) }}
+
+        <div id="discoResult">
+            {% if type == "chanson" or type == "tout" %}
+                {% for chanson in chansons %}
+                <a href="/display/chanson/{{ chanson.id }}">
+                    <div class="chansonResult">
+                        <div>
+                            <img class="cover" src={{ chanson.cover }} />
+                        </div>
+                        <div id="chansonName">
+                            <h2>{{ chanson.nom }}</h2>
+                        </div>
+                    </div>
+                </a>
+                {%  endfor %}
+            {% endif %}
+            {% if type == "artiste" or type == "tout" %}
+                {% for artiste in artistes %}
+                    <div class="artistResult">
+                        <div>
+                            <img class="cover" src={{ artiste.image}} />
+                        </div>
+                        <div id="artistName">
+                            <h2>{{ artiste.nom }}</h2>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% if type == "album" or type == "tout" %}
+                {% for album in albums %}
+                    <div class="albumResult">
+                        <div>
+                            <img class="cover" src={{ album.cover}} />
+                        </div>
+                        <div id="albumName">
+                            <h2>{{ album.nom }}</h2>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

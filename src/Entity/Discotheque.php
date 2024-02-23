@@ -22,6 +22,9 @@ class Discotheque
     #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
     private ?array $Albums = null;
 
+    #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
+    private ?array $Artistes = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -47,6 +50,18 @@ class Discotheque
     public function setAlbums(?array $Albums): static
     {
         $this->Albums = $Albums;
+
+        return $this;
+    }
+
+    public function getArtistes(): ?array
+    {
+        return $this->Artistes;
+    }
+
+    public function setArtistes(?array $Artistes): static
+    {
+        $this->Artistes = $Artistes;
 
         return $this;
     }
