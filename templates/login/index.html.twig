@@ -8,6 +8,12 @@
 </style>
 
 <div class="login-wrapper">
-    {{ form(form) }}
+    <form method="post">
+        {{ form_start(form) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.password) }}
+        <button type="submit">Se Connecter</button>
+        {{ form_end(form) }}
+    </form>
 </div>
 {% endblock %}

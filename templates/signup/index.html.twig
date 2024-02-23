@@ -12,12 +12,12 @@
 {% endblock %}
 
 <div class="signup-wrapper">
-    <form method="post" data-controller="password-match">
+    <form method="post">
         {{ form_start(form) }}
         {{ form_row(form.username) }}
         {{ form_row(form.mail) }}
-        {{ form_row(form.password.first, {'attr': {'data-target': 'password-match.password'}}) }}
-        {{ form_row(form.password.second, {'attr': {'data-target': 'password-match.confirmation'}}) }}
+        {{ form_row(form.password.first) }}
+        {{ form_row(form.password.second) }}
         <button type="submit">Register</button>
         {{ form_end(form) }}
     </form>

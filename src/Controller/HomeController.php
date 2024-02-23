@@ -14,10 +14,6 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
-        if (!isset($_SESSION['username'])) {
-            return $this->redirectToRoute('app_login');
-        }
-
         $form = $this->createFormBuilder()
             ->add('search', TextType::class)
             ->add('send', SubmitType::class, ['label' => 'Search'])

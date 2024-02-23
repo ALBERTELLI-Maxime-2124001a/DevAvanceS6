@@ -60,7 +60,7 @@ class SignupController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $user = new User($data['mail'], $data['username'], password_hash($data['password'][0], PASSWORD_DEFAULT));
+            $user = new User($data['mail'], $data['username'], password_hash($data['password'], PASSWORD_DEFAULT));
             $entityManager->persist($user);
             $entityManager->flush();
             return $this->redirectToRoute('app_home');
@@ -69,19 +69,5 @@ class SignupController extends AbstractController
         return $this->render('signup/index.html.twig', [
             'form' => $form
         ]);
-    }
-
-    public function validatePassword($value) {
-        $uppercase = preg_match('@[A-Z]@', $value);
-        $lowercase = preg_match('@[a-z]@', $value);
-        $number    = preg_match('@[0-9]@', $value);
-        $specialChars = preg_match('@[^\w]@', $value);
-
-        if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($value) < 8) {
-            return false;
-        }
-        else {
-            return true;
-        }
     }
 }
