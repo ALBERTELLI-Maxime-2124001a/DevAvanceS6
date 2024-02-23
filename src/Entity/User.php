@@ -24,19 +24,20 @@ class User
     #[ORM\Column(length: 250)]
     private ?string $mdp = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $discotheque = null;
+    #[ORM\OneToOne(targetEntity: Discotheque::class)]
+    private ?Discotheque $discotheque = null;
 
     /**
      * @param string|null $mail
      * @param string|null $pseudo
      * @param string|null $mdp
      */
-    public function __construct(?string $mail, ?string $pseudo, ?string $mdp)
+    public function __construct(?string $mail, ?string $pseudo, ?string $mdp, ?Discotheque $discotheque)
     {
         $this->mail = $mail;
         $this->pseudo = $pseudo;
         $this->mdp = $mdp;
+        $this->discotheque = $discotheque;
     }
 
     public function getId(): ?int
@@ -80,12 +81,12 @@ class User
         return $this;
     }
 
-    public function getDiscotheque(): ?int
+    public function getDiscotheque(): ?Discotheque
     {
         return $this->discotheque;
     }
 
-    public function setDiscotheque(int $discotheque): static
+    public function setDiscotheque(Discotheque $discotheque): static
     {
         $this->discotheque = $discotheque;
 

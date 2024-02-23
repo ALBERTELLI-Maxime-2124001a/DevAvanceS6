@@ -25,6 +25,8 @@ class SearchController extends AbstractController
             $fruit = $form->get('search')->getData();
             return $this->redirectToRoute('app_search', array('f' => $fruit));
         }
+
+
         $search = $this->searchApi("https://api.discogs.com/database/search?q=".$request->get('f')."&key=".$_ENV['CONSUMER_KEY']."&secret=".$_ENV['CONSUMER_SECRET_KEY']);
         return $this->render('search/index.html.twig', [
             'searchs'=>$search['results'],
