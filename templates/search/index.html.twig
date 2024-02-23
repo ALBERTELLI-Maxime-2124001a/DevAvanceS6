@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SearchController!{% endblock %}
+
+{% block body %}
+
+<div class="search-wrapper">
+    {{ form(form) }}
+    <ul>
+        {% for search in searchs %}
+            <li>
+                <div>{{ search.title }}</div>
+                <div><img src={{ search.thumb }}></div>
+                <div>{{ search.type }}</div>
+                <div><button class="add">+</button></div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
