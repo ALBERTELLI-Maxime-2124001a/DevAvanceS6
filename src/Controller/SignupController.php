@@ -61,8 +61,10 @@ class SignupController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $user = new User($data['mail'], $data['username'], password_hash($data['password'], PASSWORD_DEFAULT));
+            $disc = new Discotheque();
+            $user = new User($data['mail'], $data['username'], password_hash($data['password'], PASSWORD_DEFAULT), $disc);
             $entityManager->persist($user);
+            $entityManager->persist($disc);
             $entityManager->flush();
             return $this->redirectToRoute('app_home');
         }

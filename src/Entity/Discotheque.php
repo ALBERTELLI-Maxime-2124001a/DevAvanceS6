@@ -17,13 +17,18 @@ class Discotheque
     private ?int $id = null;
 
     #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
-    private ?array $Chansons = null;
+    private ?array $chansons = null;
 
     #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
-    private ?array $Albums = null;
+    private ?array $albums = null;
 
     #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
-    private ?array $Artistes = null;
+    private ?array $artistes = null;
+
+    /**
+     * @param int|null $id
+     */
+    public function __construct(){}
 
     public function getId(): ?int
     {
@@ -32,36 +37,36 @@ class Discotheque
 
     public function getChansons(): ?array
     {
-        return $this->Chansons;
+        return $this->chansons;
     }
 
-    public function setChansons(?array $Chansons): static
+    public function setChansons(?array $chansons): static
     {
-        $this->Chansons = $Chansons;
+        $this->chansons = $chansons;
 
         return $this;
     }
 
     public function getAlbums(): ?array
     {
-        return $this->Albums;
+        return $this->albums;
     }
 
-    public function setAlbums(?array $Albums): static
+    public function setAlbums(?array $albums): static
     {
-        $this->Albums = $Albums;
+        $this->albums = $albums;
 
         return $this;
     }
 
     public function getArtistes(): ?array
     {
-        return $this->Artistes;
+        return $this->artistes;
     }
 
-    public function setArtistes(?array $Artistes): static
+    public function setArtistes(?array $artistes): static
     {
-        $this->Artistes = $Artistes;
+        $this->artistes = $artistes;
 
         return $this;
     }

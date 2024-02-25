@@ -86,7 +86,7 @@ class User
         return $this->discotheque;
     }
 
-    public function setDiscotheque(Discotheque $discotheque): static
+    public function setDiscotheque(Discothequed $discotheque): static
     {
         $this->discotheque = $discotheque;
 
