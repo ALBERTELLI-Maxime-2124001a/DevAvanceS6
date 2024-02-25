@@ -32,12 +32,11 @@ class User
      * @param string|null $pseudo
      * @param string|null $mdp
      */
-    public function __construct(?string $mail, ?string $pseudo, ?string $mdp, ?Discotheque $discotheque)
+    public function __construct(?string $mail, ?string $pseudo, ?string $mdp)
     {
         $this->mail = $mail;
         $this->pseudo = $pseudo;
         $this->mdp = $mdp;
-        $this->discotheque = $discotheque;
     }
 
     public function getId(): ?int
